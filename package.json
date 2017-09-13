@@ -1,0 +1,17 @@
+{
+	"name": "react-native-placeholderimage",
+	"version": "0.0.3",
+	"description": "React native place holder image Component",
+	"main": "PlaceHolderImage.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/akshayaroraGS/react-native-placeholderimage.git"
+	},
+	"keywords": ["React native placeholder image"],
+	"author": "Akshay Arora",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/akshayaroraGS/react-native-placeholderimage/issues"
+	},
+	"homepage": "https://github.com/akshayaroraGS/react-native-placeholderimage#readme"
+}
