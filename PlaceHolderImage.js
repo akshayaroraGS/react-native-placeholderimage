@@ -16,7 +16,7 @@ import { Image } from 'react-native';
 export default class PlaceHolderImage extends React.Component {
 	state = { placeHolderURI: this.props.placeHolderURI };
 
-	onImageLoaded() {
+	onLoad() {
 		if (this.state.placeHolderURI) {
 			this.setState({ placeHolderURI: null });
 		}
@@ -25,8 +25,17 @@ export default class PlaceHolderImage extends React.Component {
 		}
 	}
 
+	onError() {
+		if (this.state.placeHolderURI) {
+			this.setState({ placeHolderURI: null });
+		}
+		if (this.props.onLoad) {
+			this.props.onError();
+		}
+	}
+
 	renderImage() {
-		return <Image {...this.props} onLoad={this.onImageLoaded.bind(this)} />;
+		return <Image {...this.props} onError={this.onError.bind(this)} onLoad={this.onLoad.bind(this)} />;
 	}
 
 	render() {
