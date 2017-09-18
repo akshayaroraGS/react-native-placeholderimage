@@ -11,10 +11,10 @@
  */
 
 import React from 'react';
-import { Image } from 'react-native';
+import { Image, View } from 'react-native';
 
 export default class PlaceHolderImage extends React.Component {
-	state = { placeHolderURI: this.props.placeHolderURI };
+	state = { placeHolderURI: this.props.placeHolderURI, remoteSrc: this.props.source };
 
 	onLoad() {
 		if (this.state.placeHolderURI) {
@@ -26,16 +26,16 @@ export default class PlaceHolderImage extends React.Component {
 	}
 
 	onError() {
-		if (this.state.placeHolderURI) {
-			this.setState({ placeHolderURI: null });
-		}
-		if (this.props.onLoad) {
+		this.setState({ remoteSrc: null });
+		if (this.props.onError) {
 			this.props.onError();
 		}
 	}
 
 	renderImage() {
-		return <Image {...this.props} onError={this.onError.bind(this)} onLoad={this.onLoad.bind(this)} />;
+		if (this.state.remoteSrc) {
+			return <Image {...this.props} onError={this.onError.bind(this)} onLoad={this.onLoad.bind(this)} />;
+		}
 	}
 
 	render() {
@@ -50,6 +50,6 @@ export default class PlaceHolderImage extends React.Component {
 				</Image>
 			);
 		}
-		return this.renderImage();
+		return this.state.remoteSrc ? this.renderImage() : <View />;
 	}
 }
