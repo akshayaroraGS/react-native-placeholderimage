@@ -30,7 +30,7 @@ export default class PlaceHolderImage extends React.Component {
 
 	renderImage() {
 		if (this.props.source) {
-			return <Image {...this.props} onError={this.props.onError} onLoad={this.onLoad.bind(this)} />;
+			return <Image {...this.props} onLoad={this.onLoad.bind(this)} />;
 		}
 	}
 
