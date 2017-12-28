@@ -4,52 +4,48 @@
 //
 'use strict';
 
-/**
- * Pass this Two props for Visible PlaceHolder
- * this.props.placeHolderURI
- * this.props.placeHolderStyle
- */
-
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Image, View } from 'react-native';
 
 export default class PlaceHolderImage extends React.Component {
-	state = { placeHolderURI: this.props.placeHolderURI, remoteSrc: this.props.source };
+	static propTypes = {
+		placeHolderURI: PropTypes.number,
+		placeHolderStyle: PropTypes.object,
+		hidePlaceholderOnLoad: PropTypes.bool
+	};
+
+	static defaultProps = {
+		placeHolderURI: null,
+		placeHolderStyle: null,
+		hidePlaceholderOnLoad: true
+	};
+
+	state = { showPlaceholder: true };
 
 	onLoad() {
-		if (this.state.placeHolderURI) {
-			this.setState({ placeHolderURI: null });
-		}
-		if (this.props.onLoad) {
-			this.props.onLoad();
-		}
-	}
-
-	onError() {
-		this.setState({ remoteSrc: null });
-		if (this.props.onError) {
-			this.props.onError();
-		}
+		this.props.hidePlaceholderOnLoad && this.setState({ showPlaceholder: false });
+		this.props.onLoad && this.props.onLoad();
 	}
 
 	renderImage() {
-		if (this.state.remoteSrc) {
-			return <Image {...this.props} onError={this.onError.bind(this)} onLoad={this.onLoad.bind(this)} />;
+		if (this.props.source) {
+			return <Image {...this.props} onError={this.props.onError} onLoad={this.onLoad.bind(this)} />;
 		}
 	}
 
 	render() {
-		if (this.state.placeHolderURI) {
+		if (this.props.placeHolderURI && this.state.showPlaceholder) {
 			return (
 				<Image
 					key={this.props.key}
-					source={this.state.placeHolderURI}
+					source={this.props.placeHolderURI}
 					style={[this.props.style, this.props.placeHolderStyle, { alignItems: 'center', justifyContent: 'center' }]}
 				>
 					{this.renderImage()}
 				</Image>
 			);
 		}
-		return this.state.remoteSrc ? this.renderImage() : <View />;
+		return this.props.source ? this.renderImage() : <View />;
 	}
 }
