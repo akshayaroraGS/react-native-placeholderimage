@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, View } from 'react-native';
+import { ImageBackground, View } from 'react-native';
 
 export default class PlaceHolderImage extends React.Component {
 	static propTypes = {
@@ -37,13 +37,13 @@ export default class PlaceHolderImage extends React.Component {
 	render() {
 		if (this.props.placeHolderURI && this.state.showPlaceholder) {
 			return (
-				<Image
+				<ImageBackground
 					key={this.props.key}
 					source={this.props.placeHolderURI}
 					style={[this.props.style, this.props.placeHolderStyle, { alignItems: 'center', justifyContent: 'center' }]}
 				>
 					{this.renderImage()}
-				</Image>
+				</ImageBackground>
 			);
 		}
 		return this.props.source ? this.renderImage() : <View />;
