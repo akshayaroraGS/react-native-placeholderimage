@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ImageBackground, View } from 'react-native';
+import { Image, ImageBackground, View } from 'react-native';
 
 export default class PlaceHolderImage extends React.Component {
 	static propTypes = {
