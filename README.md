@@ -1,5 +1,5 @@
 # React-Native PlaceHolderImage Component : react-native-placeholderimage
-![version](https://img.shields.io/badge/version-0.0.6-green.svg)
+![version](https://img.shields.io/badge/version-0.0.9-green.svg)
 
 ### Preface
 Are you struggling with placeholder images in react native and seeking some solution to put placeholder until your image is not downloaded from internet, you are on a right repository.
