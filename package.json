@@ -1,6 +1,6 @@
 {
 	"name": "react-native-placeholderimage",
-	"version": "0.0.9",
+	"version": "0.0.11",
 	"description": "React native place holder image Component",
 	"main": "PlaceHolderImage.js",
 	"repository": {
