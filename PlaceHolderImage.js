@@ -39,6 +39,7 @@ export default class PlaceHolderImage extends React.Component {
 			return (
 				<ImageBackground
 					key={this.props.key}
+				        imageStyle = {this.props.placeHolderStyle}
 					source={this.props.placeHolderURI}
 					style={[this.props.style, this.props.placeHolderStyle, { alignItems: 'center', justifyContent: 'center' }]}
 				>
